@@ -1,1 +1,3 @@
-import
+import beat
+
+print("hola")
