@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from bs4 import BeautifulSoup
 import re
 
 dicc_html = {
@@ -40,33 +39,6 @@ and they lived at the bottom of a well.</p>
 <p class="story">...</p>
 """
 
-"""
-1-> [html,10],head,/head
-2-> body
-3-> p,b,/b
-4-> p
-
-"""
-def busca_token(etiqueta):
-    pass
-
-soup = BeautifulSoup(html_doc, 'html.parser')
-
-print(soup)
-print(soup.prettify())
-print(soup.title)
-#print(soup.title.name)
-#print(soup.title.string)
-#print(soup.title.parent.name)
-#if soup.title.string:
-#    print("Si tiene contenido el titulo")
-#else:
-#    print("No tiene titulo salte de aqui")
-count = 1
-for tag in soup.find_all():
-    print(f"{count}-> {tag.name}")
-    count = count + 1
-
 tags = re.findall(r'<[^>]+>',html_doc)
 for t in tags:
     print(t)
@@ -77,4 +49,3 @@ for t in tags:
 
 
 
-    
