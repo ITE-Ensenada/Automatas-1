@@ -12,30 +12,20 @@ dicc_html = {
     "title": 16,
     "/title":17,
     "p": 30,
-    "/p": 31,
-    "br":32 ,
-    "hr":33,
-    "/hr": 34,
-    "<!--":35,
-    "-->":36,
-    "div":37,
-    "/div": 38,
-    "h1": 40,
-    "/h1": 41,
-    "h2": 42,
-    "/h2": 43,
-    "h3": 44,
-    "/h3": 45,
-    "h4": 46,
-    "/h4": 47,
-    "h5": 48,
-    "/h5": 49,
-    "h6": 50,
-    "/h6": 51,
+    "br":31 ,
+    "hr":32,
+    "<!--":33,
+    "-->":34,
+    "div":35,
+    "h1":20,
+    "h2":21,
+    "h3":22,
+    "h4":23,
+    "h5":24,
+    "h6":25,
 }
 
-html_doc = """
-<html><head></head>
+html_doc = """<html><head></head>
 <body>
 <p class="title"><b>The Dormouse's story</b>
 
@@ -49,7 +39,7 @@ and they lived at the bottom of a well.</p>
 <p class="story">...</p>
 """
 
-tags = re.findall(r'<[^>]+>', html_doc)
+tags = re.findall(r'<[^>]+>',html_doc)
 for t in tags:
     print(re.sub(r'\s?\w+=\"[\w\d]+\"', '', t))
 
