@@ -3,35 +3,39 @@ import re
 
 dicc_html = {
     "!<DOCTYPE>": 0,
-    "html" : 10,
-    "/html": 11,
-    "head" : 12,
-    "/head": 13,
-    "body" : 14,
-    "/body":15,
-    "title": 16,
-    "/title":17,
-    "p": 30,
-    "/p": 31,
-    "br":32 ,
-    "hr":33,
-    "/hr": 34,
+    "<html" : 10,
+    "</html": 11,
+    "<head" : 12,
+    "</head": 13,
+    "<body" : 14,
+    "</body":15,
+    "<title": 16,
+    "</title":17,
+    "<p": 30,
+    "</p": 31,
+    "<br":32 ,
+    "<hr":33,
+    "</hr": 34,
     "<!--":35,
     "-->":36,
-    "div":37,
-    "/div": 38,
-    "h1": 40,
-    "/h1": 41,
-    "h2": 42,
-    "/h2": 43,
-    "h3": 44,
-    "/h3": 45,
-    "h4": 46,
-    "/h4": 47,
-    "h5": 48,
-    "/h5": 49,
-    "h6": 50,
-    "/h6": 51,
+    "<div":37,
+    "</div": 38,
+    "<h1": 40,
+    "</h1": 41,
+    "<h2": 42,
+    "</h2": 43,
+    "<h3": 44,
+    "</h3": 45,
+    "<h4": 46,
+    "</h4": 47,
+    "<h5": 48,
+    "</h5": 49,
+    "<h6": 50,
+    "</h6": 51,
+    "<a": 52,
+    "</a": 53,
+    "<b": 54,
+    "</b": 55,
 }
 
 html_doc = """
@@ -51,8 +55,14 @@ and they lived at the bottom of a well.</p>
 
 tags = re.findall(r'<[^>]+>', html_doc)
 for t in tags:
-    print(re.sub(r'\s?\w+=\"[\w\d]+\"', '', t))
-
+    s = t.split()
+    for key,value in dicc_html.items():
+        if key in s[0]:
+            print(f"{s[0]} \t=> {value}")
+            bandera = 0
+            break
+    if bandera:
+        print(f'{s[0]} \t=> -1')
 
 
 
