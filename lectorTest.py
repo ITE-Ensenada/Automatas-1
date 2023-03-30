@@ -2,47 +2,291 @@
 import re
 
 dicc_html = {
-    "!<DOCTYPE>": 0,
-    "html" : 10,
-    "/html": 11,
-    "head" : 12,
-    "/head": 13,
-    "body" : 14,
-    "/body":15,
-    "title": 16,
-    "/title":17,
-    "p": 30,
-    "br":31 ,
-    "hr":32,
-    "<!--":33,
-    "-->":34,
-    "div":35,
-    "h1":20,
-    "h2":21,
-    "h3":22,
-    "h4":23,
-    "h5":24,
-    "h6":25,
+    #Basic HTML
+    "<!DOCTYPE": 0,
+    "<html>": 10,
+    "</html>": 11,
+    "<head>": 12,
+    "</head>": 13,
+    "<title>": 14,
+    "</tittle>": 15,
+    "<body>": 16,
+    "</body>": 17,
+    "<p>": 18,
+    "</p>": 19,
+    "<br>": 20,
+    "<hr>": 21,
+    "</hr>": 22,
+    "<h1>": 23,
+    "</h1>": 24,
+    "<h2>": 25,
+    "</h2>": 26,
+    "<h3>": 27,
+    "</h3>": 28,
+    "<h4>": 29,
+    "</h4>": 30,
+    "<h5>": 31,
+    "</h5>": 32,
+    "<h6>": 33,
+    "</h6>": 34,
+    "<!--": 35,
+    "-->": 36,
+    #Styles and Semantics
+    "<style>":40,
+    "</style>":41,
+    "<div>":42,
+    "</div>":43,
+    "<span>":44,
+    "</span>":45,
+    "<header>":46,
+    "</header>":47,
+    "<footer>":48,
+    "</footer>":49,
+    "<main>":50,
+    "</main>":51,
+    "<section>":52,
+    "</section>":53,
+    "<article>":54,
+    "</article>":55,
+    "<aside>":56,
+    "</aside>":57,
+    "<details>":58,
+    "</details>":59,
+    "<dialog>":60,
+    "</dialog>":61,
+    "<summary>":62,
+    "</summary>":63,
+    "<data>":64,
+    "</data>":65,
+    #Programming
+    "<script>":70,
+    "</script>":71,
+    "<noscript>":72,
+    "</noscript>":73,
+    "<embed>":74,
+    "<object>":75,
+    "</object>":76,
+    "<param>":77,
+    #Links
+    "<a>":80,
+    "</a>":81,
+    "<link>":82,
+    "<nav>":83,
+    "</nav>":84,
+    #Lists
+    "<ul>":90,
+    "</ul>":91,
+    "<ol>":92,
+    "</ol>":93,
+    "<li>":94,
+    "</li>":95,
+    "<dl>":96,
+    "</dl>":97,
+    "<dt>":98,
+    "</dt>":99,
+    "<dd>":100,
+    "</dd>":101,
+    #Tables
+    "<table>":110,
+    "</table>":111,
+    "<caption>":112,
+    "</caption>":113,
+    "<th>":114,
+    "</th>":115,
+    "<tr>":116,
+    "</tr>":117,
+    "<thead>":118,
+    "</thead>":119,
+    "<tbody>":120,
+    "</tbody>":121,
+    "<tfoot>":122,
+    "</tfoot>":123,
+    "<col>":124,
+    "<colgroup>":125,
+    "</colgroup>":126,
+    #Forms and Input
+    "<form>":130,
+    "</form>":131,
+    "<input>":132,
+    "</input>":133,
+    "<textarea>":134,
+    "</textarea>":135,
+    "<button>":136,
+    "</button>":137,
+    "<select>":138,
+    "</select>":139,
+    "<optgroup>":140,
+    "</optgroup>":141,
+    "<option>":142,
+    "</option>":143,
+    "<label>":144,
+    "</label>":145,
+    "<fieldset>":146,
+    "</fieldset>":147,
+    "<legend>":148,
+    "</legend>":149,
+    "<datalist>":150,
+    "</datalist>":151,
+    "<output>":152,
+    "</output>":153,
+    #Audio - Video
+    "<audio>":160,
+    "</audio>":161,
+    "<source>":162,
+    "<track>":163,
+    "<video>":164,
+    "</videos>":165,
+    #Images
+    "<img>":170,
+    "<map>":171,
+    "</map>":172,
+    "<area>":173,
+    "<canvas>":174,
+    "</canvas>":175,
+    "<figcaption>":176,
+    "</figcaption>":177,
+    "<figure>":178,
+    "</figure>":179,
+    "<picture>":180,
+    "</picture>":181,
+    "<svg>":182,
+    "</svg>":183,
+    #Formatting
+    "<abrr>":190,
+    "</abrr>":191,
+    "<address>":192,
+    "</address>":193,
+    "<b>":194,
+    "</b>":195,
+    "<bdi>":196,
+    "</bdi>":197,
+    "<bdo>":198,
+    "</bdo>":199,
+    "<blockquote>":200,
+    "</blockquote>":201,
+    "<cite>":202,
+    "</cite>":203,
+    "<code>":204,
+    "</code>":205,
+    "<del>":206,
+    "</del>":207,
+    "<dfn>":208,
+    "</dfn>":209,
+    "<em>":210,
+    "</em>":211,
+    "<i>":212,
+    "</i>":213,
+    "<ins>":214,
+    "</ins>":215,
+    "<kbd>":216,
+    "</kbd>":217,
+    "<mark>":218,
+    "</mark>":219,
+    "<meter>":220,
+    "</meter>":221,
+    "<pre>":222,
+    "</pre>":223,
+    "<progress>":224,
+    "</progress>":225,
+    "<q>":226,
+    "</q>":227,
+    "<rp>":228,
+    "</rp>":229,
+    "<rt>":230,
+    "</rt>":231,
+    "<ruby>":232,
+    "</ruby>":233,
+    "<s>":234,
+    "</s>":235,
+    "<samp>":236,
+    "</samp>":237,
+    "<small>":238,
+    "</small>":239,
+    "<strong>":240,
+    "</strong>":241,
+    "<sub>":242,
+    "</sub>":243,
+    "<template>":244,
+    "</template>":245,
+    "<time>":246,
+    "</time>":247,
+    "<u>":248,
+    "</u>":249,
+    "<var>":250,
+    "</var>":251,
+    "<wbr>":252,
+    "</wbr>":253,
+    #Frames
+    "<iframe>":254,
+    "</iframe>":255,
+    #Meta info
+    "<meta>":260,
+    "</meta>":261,
+    "<base>":262,
+    "</base>":263,
 }
 
-html_doc = """<html><head></head>
+html_doc = """
+<!--
+    Clase del 18/08/22
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Da web ma bruda</title>
+</head>
 <body>
-<p class="title"><b>The Dormouse's story</b>
+    <header>
+        Introduccion a CSS
+    </header>
 
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
-<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
-<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
-<p>
-<a>
-<p class="story">...</p>
+    <section class="primera_seccion">
+        <h2>Cosas que me gustan hacer</h2>
+        <ul>
+            <li id="favorite_items">Jugar minecraft</li>
+            <li>Escuchar musica</li>
+            <li id="favorite_items">Platicar con amigos</li>
+            <li>Ir al gimnasio</li>
+            <li id="favorite_items">Jugar videojuegos</li>
+            <li>Picar en minecraft</li>
+        </ul>
+    </section>
+    <section class="segunda_seccion">
+        <h2>Cosas que me gustan hacer</h2>
+        <ul>
+            <li>Jugar minecraft</li>
+            <li>Escuchar musica</li>
+            <li>Platicar con amigos</li>
+            <li>Ir al gimnasio</li>
+            <li>Jugar videojuegos</li>
+            <li>Picar en minecraft</li>
+        </ul>
+    </section>
+
+    <script src="app02.js"></script>
+</body>
+</html> """
+
+nlines = len(html_doc.splitlines())
+print(f'numero de lineas: {nlines}')
+
 """
-
 tags = re.findall(r'<[^>]+>',html_doc)
 for t in tags:
-    print(re.sub(r'\s?\w+=\"[\w\d]+\"', '', t))
-
+    s = t.split()
+    for key,value in dicc_html.items():
+        if key in s[0]:
+            print(f"{s[0]} \t=> {value}")
+            bandera = 0
+            break
+    if bandera:
+        print(f'{s[0]} \t=> -1')
+"""
 
 
 
