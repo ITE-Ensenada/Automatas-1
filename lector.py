@@ -38,6 +38,15 @@ dicc_html = {
     "</b>": 55,
     }
 
+def token_isopen(token):
+    
+    if token.startswith("<", 0, 1) and "/" not in token:
+        print("is open")
+        return True
+    elif "/" in token:
+        print("close tag")
+        return False
+    
 html_doc = """
 <html><head></head>
 <body>
@@ -53,17 +62,24 @@ and they lived at the bottom of a well.</p>
 <p class="story">...</p>
 """
 
+tokens = []
 tags = re.findall(r'<[^>]+>', html_doc)
 for t in tags:
     s = t.split()
+    bandera = 1
     for key,value in dicc_html.items():
         if key in s[0]:
-            print(f"{s[0]} \t=> {value}")
+            print(f"\n{s[0]} \t=> {value}")
+            print(token_isopen(key))
             bandera = 0
+            tokens.append(value)
             break
     if bandera:
-        print(f'{s[0]} \t=> -1')
+        print(f'\n{s[0]} \t=> -1')
+        print("u dumb kid finish the fkn tag")
 
+html_close = [0,31]
+print(f"\n{tokens}")
 
 
 
