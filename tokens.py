@@ -1,5 +1,4 @@
 dicc_html = {
-
     #Basic HTML
     "<!DOCTYPE": 0,
     "<html>": 10,
