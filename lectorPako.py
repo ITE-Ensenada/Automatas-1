@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import re
 
-dicc_html = {
+dicc = {
     "!<DOCTYPE>": 0,
     "html" : 10,
     "/html": 11,
