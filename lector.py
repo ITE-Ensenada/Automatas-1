@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 import re
 from htmlTags import dicc_html as dictionary
-from bs4 import BeautifulSoup
-html_file = open("index.html", "r")
-index = html_file.read()
-soup = BeautifulSoup(index, 'html.parser')
 
 def token_isopen(token):
     for key,value in dictionary.items():
@@ -19,14 +15,17 @@ def token_isopen(token):
                 return 0
 
 #    if token.startswith("<", 0, 1) and "/" not in token:
- #       print("is open")
-  #      return True
-  #  elif "/" in token:
-   #     print("close tag")
-    #    return False
-    
+#       print("is open")
+#      return True
+#  elif "/" in token:
+#     print("close tag")
+#    return False
+
+with open("index.html", "r", encoding='utf-8-sig') as f:
+    html_doc = f.read()
+
 tokens = []
-tags = re.findall(r'<[^>]+>', document)
+tags = re.findall(r'<[^>]+>', html_doc)
 #tags = html_doc.find_all(r'<[^>]+>')
 for t in tags:
     s = t.split()
@@ -40,7 +39,6 @@ for t in tags:
             break
     if bandera:
         print(f'\n{s[0]} \t=> -1')
-        print("u dumb kid finish the fkn tag")
 
 html_close = [0,31]
 print(f"\n{tokens}")
