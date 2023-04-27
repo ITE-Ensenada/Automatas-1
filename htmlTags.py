@@ -1,3 +1,4 @@
+
 dicc_html = {
     "!<DOCTYPE>": 0,
      "<html>": 10,
