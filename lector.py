@@ -13,12 +13,13 @@ def token_isopen(token):
         if value == token:
             if token in [0,20]:
                 return 2
-            elif token == 34:
+            if token == 34:
                 return 1
-            elif '/' in key:
+            if '/' in key:
                 return 1
-            else:
-                return 0
+        else:
+            return 0
+        return value
 with open("index.html", "r", encoding='utf-8-sig') as f:
     html_doc = f.read()
 tokens = []
