@@ -1,18 +1,28 @@
+""" este programa casi hace algo"""
 #!/usr/bin/env python
 import re
 from htmlTags import dicc_html as dictionary
+<<<<<<< HEAD
+=======
+from bs4 import BeautifulSoup
+html_file = open("index.html", 'r')
+index = html_file.read()
+soup = BeautifulSoup(index, 'html.parser')
+>>>>>>> 965aafa8d5473fa803515bf4bfcb0a152b3d60ff
 
 def token_isopen(token):
-    for key,value in dictionary.items():
+    """ tokens """
+    for key, value in dictionary.items():
         if value == token:
             if token in [33,0,31]:
                 pass
             elif token == 34:
-                return 1   
+                return 1
             elif '/' in key:
                 return 1
             else:
                 return 0
+<<<<<<< HEAD
 
 #    if token.startswith("<", 0, 1) and "/" not in token:
 #       print("is open")
@@ -27,6 +37,11 @@ with open("index.html", "r", encoding='utf-8-sig') as f:
 tokens = []
 tags = re.findall(r'<[^>]+>', html_doc)
 #tags = html_doc.find_all(r'<[^>]+>')
+=======
+tokens = []
+doc = ""
+tags = re.findall(r'<[^>]+>', doc)
+>>>>>>> 965aafa8d5473fa803515bf4bfcb0a152b3d60ff
 for t in tags:
     s = t.split()
     bandera = 1
@@ -42,9 +57,3 @@ for t in tags:
 
 html_close = [0,31]
 print(f"\n{tokens}")
-
-
-
-
-
-
