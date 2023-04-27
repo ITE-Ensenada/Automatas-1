@@ -7,9 +7,13 @@ dicc = {
     "luckynumbers":vector
 }
 agenda = {
+
     "datos": dicc
 }
+
+
 print(dicc)
+
 for key,value in dicc.items():
     print(key, ' : ', value)
 
